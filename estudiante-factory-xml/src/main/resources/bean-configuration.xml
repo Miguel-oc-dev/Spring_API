@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- bean definitions here -->
+
+    <bean id="lenguajeFactory" class="lenguajes.programacion.programacion.LenguajeFactory" factory-method="getInstance"/>
+
+    <bean id="estudiante1" class="lenguajes.programacion.model.Estudiante">
+        <property name="nombre" value="Mario Alberto" />
+        <property name="edad" value="20" />
+        <property name="numCuenta" value="318291895" />
+        <property name="lenguaje">
+            <bean factory-bean="lenguajeFactory" factory-method="getLenguaje">
+                <constructor-arg value="JAVA"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="estudiante2" class="lenguajes.programacion.model.Estudiante">
+        <property name="nombre" value="Maria Fernanda" />
+        <property name="edad" value="25" />
+        <property name="numCuenta" value="329566885" />
+        <property name="lenguaje">
+            <bean factory-bean="lenguajeFactory" factory-method="getLenguaje">
+                <constructor-arg value="PYTHON"/>
+            </bean>
+        </property>
+    </bean>
+</beans>
